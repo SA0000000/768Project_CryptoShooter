@@ -3,10 +3,10 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
 {
-	public float health = 20f;                         // How much health the player has left.
+	public float health = 10f;                         // How much health the player has left.
 	public AudioClip deathClip;                         // The sound effect of the player dying.
 	private Animator anim;                              // Reference to the animator component.
-	private PlayerMovement playerMovement;              // Reference to the player movement script.
+	//private PlayerMovement playerMovement;              // Reference to the player movement script.
 	private HashIDs hash;                               // Reference to the HashIDs.
 	public float sinkSpeed = 2.5f;              		// The speed at which the enemy sinks through the floor when dead.
 
@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
 	{
 		// Setting up the references.
 		anim = GetComponent<Animator>();
-		playerMovement = GetComponent<PlayerMovement>();
+		//playerMovement = GetComponent<PlayerMovement>();
 		hash = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<HashIDs>();
 
 	}
@@ -44,6 +44,9 @@ public class EnemyHealth : MonoBehaviour
 		{
 			// ... move the enemy down by the sinkSpeed per second.
 			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+
+			// After 2 seconds destory the enemy.
+			Destroy (gameObject, 2f);
 		}
 	}
 	
@@ -69,33 +72,15 @@ public class EnemyHealth : MonoBehaviour
 		
 		// Disable the movement.
 		anim.SetFloat(hash.speedFloat, 0f);
-		playerMovement.enabled = false;
-		
-		// Stop the footsteps playing.
-		audio.Stop();
+		//playerMovement.enabled = false;
 
-		//the player is dead and now it reaches the point where it can start sinking
-		StartSinking ();
+		// The enemy should now sink.
+		isSinking = true;
 	}
 
 	public void TakeDamage (float amount)
 	{
 		// Decrement the player's health by amount.
 		health -= amount;
-	}
-
-	public void StartSinking ()
-	{
-		// Find and disable the Nav Mesh Agent.
-		GetComponent <NavMeshAgent> ().enabled = false;
-		
-		// Find the rigidbody component and make it kinematic (since we use Translate to sink the enemy).
-		GetComponent <Rigidbody> ().isKinematic = true;
-		
-		// The enemy should now sink.
-		isSinking = true;
-
-		// After 2 seconds destory the enemy.
-		Destroy (gameObject, 2f);
 	}
 }

@@ -12,18 +12,18 @@ public class PlayerShooting : MonoBehaviour
 	private HashIDs hash;                               // Reference to the HashIDs script.
 	private LineRenderer laserShotLine;                 // Reference to the laser shot line renderer.
 	private Light laserShotLight;                       // Reference to the laser shot light.
-	//private SphereCollider col;                       // Reference to the sphere collider.
-	private Transform enemy;                           	// Reference to the enemy's transform.
+
+	private GameObject enemy;                           // Reference to the enemy's gameObject
 	private EnemyHealth enemyHealth;	                // Reference to the enemy's health.
 	public GameObject gun;								// Reference to the player's gun
 	private bool shooting;                              // A bool to say whether or not the player is currently shooting.
 	Ray shootRay;                                  		// A ray from the gun end forwards.
 	RaycastHit shootHit;                            	// A raycast hit to get information about what was hit.
 	float timer;                                    	// A timer to determine when to fire.
-	//int shootableMask;                                // A layer mask so the raycast only hits things on the shootable layer.
+	int shootableMask;                                  // A layer mask so the raycast only hits things on the shootable layer.
 	public float timeBetweenBullets = 0.15f;        	// The time between each shot
 	float effectsDisplayTime = 0.2f;                	// The proportion of the timeBetweenBullets that the effects will display for.
-	public float range = 10f;                      		// The distance the gun can fire.
+	public float range = 4f;                      		// The distance the gun can fire.
 
 
 	void Awake ()
@@ -35,15 +35,12 @@ public class PlayerShooting : MonoBehaviour
 		//col = GetComponent<SphereCollider>();
 		//enemy = GameObject.FindGameObjectWithTag(Tags.enemy).transform;
 		//enemyHealth = enemy.gameObject.GetComponent<EnemyHealth>();
+		shootableMask = LayerMask.GetMask ("Shootable");
 		hash = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<HashIDs>();
 		
 		// The line renderer and light are off to start.
 		laserShotLine.enabled = false;
 		laserShotLight.intensity = 0f;
-
-		// Create a layer mask for the Shootable layer.
-		//shootableMask = LayerMask.GetMask ("Shootable");
-		
 	}
 	
 	
@@ -70,21 +67,7 @@ public class PlayerShooting : MonoBehaviour
 			// disable the effects.
 			DisableEffects ();
 		}
-		
-		/*** OLD CODE
-		// If the shot curve is peaking and the player is not currently shooting...
-		if(shot > 0.5f && !shooting)
-			// ... shoot
-			Shoot();
-		
-		// If the shot curve is no longer peaking...
-		if(shot < 0.5f)
-		{
-			// ... the player is no longer shooting and disable the line renderer.
-			shooting = false;
-			laserShotLine.enabled = false;
-		} */
-		
+
 		// Fade the light out.
 		laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
 	}
@@ -131,10 +114,12 @@ public class PlayerShooting : MonoBehaviour
 		shootRay.direction = gun.transform.forward;
 		
 		// Perform the raycast against gameobjects on the shootable layer and if it hits something...
-		if(Physics.Raycast (shootRay, out shootHit, range, 0))//shootableMask))
+		if(Physics.Raycast (shootRay, out shootHit, range,shootableMask))
 		{
 			// Try and find an EnemyHealth script on the gameobject hit
-			enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
+			enemy = shootHit.transform.gameObject;
+			//enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
+			enemyHealth = enemy.GetComponent<EnemyHealth>();
 			
 			// If the EnemyHealth component exist
 			if(enemyHealth != null)
