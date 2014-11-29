@@ -1,0 +1,21 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController\CreateEnemy.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Enemy\EnemyAI.cs" Line="64" Column="4" />
+      <File FileName="Assets\Scripts\Enemy\EnemyAnimation.cs" Line="83" Column="5" />
+      <File FileName="Assets\Scripts\Enemy\EnemySight.cs" Line="18" Column="71" />
+      <File FileName="Assets\Scripts\GameController\CreateEnemy.cs" Line="27" Column="49" />
+      <File FileName="Assets\Scripts\Player\PlayerMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\PlayerShooting.cs" Line="37" Column="60" />
+      <File FileName="Assets\Scripts\Player\ImageSharePlacement.cs" Line="24" Column="41" />
+      <File FileName="Assets\Scripts\Player\GunMovement.cs" Line="18" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\EnemyHealth.cs" Line="19" Column="35" />
+      <File FileName="Assets\Scripts\RVO\Simulator.cs" Line="130" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
