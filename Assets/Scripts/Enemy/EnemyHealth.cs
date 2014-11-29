@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
 	private Animator anim;                              // Reference to the animator component.
 	//private PlayerMovement playerMovement;              // Reference to the player movement script.
 	private HashIDs hash;                               // Reference to the HashIDs.
-	public float sinkSpeed = 2.5f;              		// The speed at which the enemy sinks through the floor when dead.
+	public float sinkSpeed = 1.5f;              		// The speed at which the enemy sinks through the floor when dead.
 
 	private bool playerDead;                            // A bool to show if the player is dead or not.
 	bool isSinking;                             		// Whether the enemy has started sinking through the floor.

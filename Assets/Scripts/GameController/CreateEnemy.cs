@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CreateEnemy : MonoBehaviour {
 
-	public static int enemyCount=5;	// to set number of enemies
+	public static int enemyCount = 5;	// to set number of enemies
 	public Vector3 spawnValues;	// positions where the enemy can be spawned
 	public GameObject enemy;	// enemy prefab to be spawned
 	GameObject[] enemies = new GameObject[enemyCount];		// all the enemies that have been spawned
@@ -14,7 +14,7 @@ public class CreateEnemy : MonoBehaviour {
 	     for (int i=0; i < enemyCount; i++) {
 			Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), 0.0f, spawnValues.z);
 			Quaternion spawnRotation = Quaternion.identity;
-			enemies[i] = (GameObject)Instantiate(enemy, spawnPosition,spawnRotation);
+			enemies[i] = (GameObject)Instantiate(enemy, spawnPosition, spawnRotation);
 			//set patrolway points for each enemy
 			enemies[i].GetComponent<EnemyAI>().setWayPoints(wayPoints);
 			enemies[i].GetComponent<EnemyAI>().wayPointSetFlag = true;

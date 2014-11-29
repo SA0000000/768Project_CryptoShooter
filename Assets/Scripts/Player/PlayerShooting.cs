@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerShooting : MonoBehaviour
 {
-	public float damage = 10f;                  		// The damage per shot.
+	public float damage = 11f;                  		// The damage per shot.
 	public AudioClip shotClip;                          // An audio clip to play when a shot happens.
 	public float flashIntensity = 3f;                   // The intensity of the light when the shot happens.
 	public float fadeSpeed = 10f;                       // How fast the light will fade after the shot.
