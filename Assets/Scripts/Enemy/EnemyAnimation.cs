@@ -40,22 +40,29 @@ public class EnemyAnimation : MonoBehaviour
 	
 	void Update () 
 	{
+		Vector3 desiredVelocity = new Vector3 (0.0f, 0.0f, 3.0f);
+		float speed;
+
+		//update current position
+		transform.position +=desiredVelocity;
+		Debug.Log ("x:"+transform.position.x+" y:"+transform.position.y+" z:"+transform.position.z);
+
 		// Calculate the parameters that need to be passed to the animator component.
-		NavAnimSetup();
+		NavAnimSetup(desiredVelocity);
+		//rigidbody.AddForce(transform.forward*speed, ForceMode.VelocityChange);
 	}
 	
 	
 	void OnAnimatorMove ()
 	{
 		// Set the NavMeshAgent's velocity to the change in position since the last frame, by the time it took for the last frame.
-		nav.velocity = anim.deltaPosition / Time.deltaTime;
+		//nav.velocity = anim.deltaPosition / Time.deltaTime;
 		
 		// The gameobject's rotation is driven by the animation's rotation.
 		transform.rotation = anim.rootRotation;
 	}
 	
-	
-	void NavAnimSetup ()
+	void NavAnimSetup (Vector3 desiredVelocity)
 	{
 		// Create the parameters to pass to the helper function.
 		float speed;
@@ -67,28 +74,29 @@ public class EnemyAnimation : MonoBehaviour
 			// ... the enemy should stop...
 			speed = 0f;
 			
-			// ... and the angle to turn through is towards the player.
+			// and the angle to turn through is towards the player
 			angle = FindAngle(transform.forward, player.position - transform.position, transform.up);
 		}
 		else
 		{
-			// Otherwise the speed is a projection of desired velocity on to the forward vector...
-			speed = Vector3.Project(nav.desiredVelocity, transform.forward).magnitude;
+			// Otherwise the speed is a projection of desired velocity on to the forward vector
+			speed = Vector3.Project(desiredVelocity, transform.forward).magnitude;
 			
-			// ... and the angle is the angle between forward and the desired velocity.
-			angle = FindAngle(transform.forward, nav.desiredVelocity, transform.up);
+			//  and the angle is the angle between forward and the desired velocity.
+			angle = FindAngle(transform.forward, desiredVelocity, transform.up);
 			
-			// If the angle is within the deadZone...
+			// If the angle is within the deadZone
 			if(Mathf.Abs(angle) < deadZone)
 			{
-				// ... set the direction to be along the desired direction and set the angle to be zero.
-				transform.LookAt(transform.position + nav.desiredVelocity);
+				// set the direction to be along the desired direction and set the angle to be zero
+				transform.LookAt(transform.position + desiredVelocity);
 				angle = 0f;
 			}
 		}
 		
 		// Call the Setup function of the helper class with the given parameters.
 		animSetup.Setup(speed, angle);
+
 	}
 	
 	

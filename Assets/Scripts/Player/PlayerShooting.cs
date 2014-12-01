@@ -23,7 +23,7 @@ public class PlayerShooting : MonoBehaviour
 	int shootableMask;                                  // A layer mask so the raycast only hits things on the shootable layer.
 	public float timeBetweenBullets = 0.15f;        	// The time between each shot
 	float effectsDisplayTime = 0.2f;                	// The proportion of the timeBetweenBullets that the effects will display for.
-	public float range = 4f;                      		// The distance the gun can fire.
+	public float range = 30f;                      		// The distance the gun can fire.
 
 
 	void Awake ()

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CreateEnemy : MonoBehaviour {
 
-	public static int enemyCount = 5;	// to set number of enemies
+	public static int enemyCount = 0;	// to set number of enemies
 	public Vector3 spawnValues;	// positions where the enemy can be spawned
 	public GameObject enemy;	// enemy prefab to be spawned
 	GameObject[] enemies = new GameObject[enemyCount];		// all the enemies that have been spawned
