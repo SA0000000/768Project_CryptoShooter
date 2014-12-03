@@ -79,20 +79,7 @@ public class PlayerShooting : MonoBehaviour
 		laserShotLight.enabled = false;
 	}
 	
-	
-	/*void OnAnimatorIK (int layerIndex)
-	{
-		// Cache the current value of the AimWeight curve.
-		float aimWeight = anim.GetFloat(hash.aimWeightFloat);
-		
-		// Set the IK position of the right hand to the player's centre.
-		anim.SetIKPosition(AvatarIKGoal.RightHand, enemy.position + Vector3.up);
-		
-		// Set the weight of the IK compared to animation to that of the curve.
-		anim.SetIKPositionWeight(AvatarIKGoal.RightHand, aimWeight);
-	}*/
-	
-	
+
 	void Shoot ()
 	{
 		//reset  the timer
@@ -106,7 +93,7 @@ public class PlayerShooting : MonoBehaviour
 
 		// Enable the line renderer and set it's first position to be the end of the gun.
 		laserShotLine.enabled = true;
-		laserShotLine.SetPosition (0, gun.transform.position);
+		laserShotLine.SetPosition (0, gun.transform.position + new Vector3(0.1f,0.0f,0.0f));
 
 		Vector3 pos = new Vector3 (0.05f, 0.0f, 0.0f);
 		// Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
