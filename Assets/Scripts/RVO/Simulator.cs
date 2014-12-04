@@ -203,13 +203,12 @@ namespace RVO
                 }
                 _doneEvent.Set();
             }
+
             internal void update(object o)
             {
                 for (int i = _start; i < _end; ++i)
                 {
-					Debug.Log("Update started");
                     Simulator.Instance.agents_[i].update();
-					Debug.Log("Update ended");
 				}
                 _doneEvent.Set();
             }
@@ -229,6 +228,7 @@ namespace RVO
 
 				Simulator.Instance.agents_[i].computeNeighbors();
 				Simulator.Instance.agents_[i].computeNewVelocity();
+				Debug.Log("RVO computed current Velocity for agent: " + Simulator.Instance.agents_[i].id_ + " : " + Simulator.Instance.getAgentVelocity(i));
 			}
 		}
 		
@@ -270,7 +270,7 @@ namespace RVO
 				//Sequential Execution
 				nonThreadedStep();
 				nonThreadedUpdate();
-
+			
             time_ += timeStep_;
 			}catch(Exception e ){
 				Debug.Log ("Exception : " + e.Message);

@@ -53,7 +53,6 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemySight.cs" />
      <Compile Include="Assets\Scripts\GameController\CreateEnemy.cs" />
-     <Compile Include="Assets\Scripts\GameController\CreateEnemy2.cs" />
      <Compile Include="Assets\Scripts\GameController\HashIDs.cs" />
      <Compile Include="Assets\Scripts\GameController\LastPlayerSighting.cs" />
      <Compile Include="Assets\Scripts\Player\GunMovement.cs" />

@@ -36,11 +36,10 @@ public class EnemyAnimation : MonoBehaviour
 		// We need to convert the angle for the deadzone from degrees to radians.
 		deadZone *= Mathf.Deg2Rad;
 	}
+
 	
-	
-	void Update () 
+	public void moveAgent (Vector3 desiredVelocity) 
 	{
-		Vector3 desiredVelocity = new Vector3 (0.0f, 0.0f, -1.0f);
 		float speed;
 
 		//update current position
