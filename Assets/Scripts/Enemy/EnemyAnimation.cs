@@ -40,7 +40,7 @@ public class EnemyAnimation : MonoBehaviour
 	
 	void Update () 
 	{
-		Vector3 desiredVelocity = new Vector3 (0.0f, 0.0f, 3.0f);
+		Vector3 desiredVelocity = new Vector3 (0.0f, 0.0f, -1.0f);
 		float speed;
 
 		//update current position
