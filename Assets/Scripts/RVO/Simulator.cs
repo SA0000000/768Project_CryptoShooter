@@ -123,7 +123,11 @@ namespace RVO
         {
             return agents_[i].position_;
         }
-        public Vector2 getAgentPrefVelocity(int i)
+		public void setAgentPosition(int i,Vector2 pos)
+		{
+			agents_[i].position_ = pos;
+		}
+		public Vector2 getAgentPrefVelocity(int i)
         {
             return agents_[i].prefVelocity_;
         }
@@ -228,7 +232,7 @@ namespace RVO
 
 				Simulator.Instance.agents_[i].computeNeighbors();
 				Simulator.Instance.agents_[i].computeNewVelocity();
-				Debug.Log("RVO computed current Velocity for agent: " + Simulator.Instance.agents_[i].id_ + " : " + Simulator.Instance.getAgentVelocity(i));
+				//Debug.Log("RVO computed current Velocity for agent: " + Simulator.Instance.agents_[i].id_ + " : " + Simulator.Instance.getAgentVelocity(i));
 			}
 		}
 		

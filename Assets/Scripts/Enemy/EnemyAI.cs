@@ -24,36 +24,36 @@ public class EnemyAI : MonoBehaviour
 	
 	void Awake ()
 	{
-		// Setting up the references.
-		enemySight = GetComponent<EnemySight>();
-		nav = GetComponent<NavMeshAgent>();
-		player = GameObject.FindGameObjectWithTag(Tags.player).transform;
-		//playerHealth = player.GetComponent<PlayerHealth>();
-		lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
-
-		//set default way point
-		GameObject[] go = GameObject.FindGameObjectsWithTag("WayPoint");
-		defaultWayPoint = new Transform[go.Length];
-		for(int i =0; i< go.Length;i++)
-			defaultWayPoint[i] = go[i].transform;
+//		// Setting up the references.
+//		enemySight = GetComponent<EnemySight>();
+//		nav = GetComponent<NavMeshAgent>();
+//		player = GameObject.FindGameObjectWithTag(Tags.player).transform;
+//		//playerHealth = player.GetComponent<PlayerHealth>();
+//		lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
+//
+//		//set default way point
+//		GameObject[] go = GameObject.FindGameObjectsWithTag("WayPoint");
+//		defaultWayPoint = new Transform[go.Length];
+//		for(int i =0; i< go.Length;i++)
+//			defaultWayPoint[i] = go[i].transform;
 	}
 	
 	
 	void Update ()
 	{
-		// If the player is in sight and is alive...
-		if(enemySight.playerInSight )//&& playerHealth.health > 0f)
-			// ... stop.
-			Stopping();
-
-		// If the player has been sighted and isn't dead...
-		else if(enemySight.personalLastSighting != lastPlayerSighting.resetPosition )//&& playerHealth.health > 0f)
-			// ... chase.
-			Chasing();
-		// Otherwise...
-		else
-			// ... patrol.
-			Patrolling();
+//		// If the player is in sight and is alive...
+//		if(enemySight.playerInSight )//&& playerHealth.health > 0f)
+//			// ... stop.
+//			Stopping();
+//
+//		// If the player has been sighted and isn't dead...
+//		else if(enemySight.personalLastSighting != lastPlayerSighting.resetPosition )//&& playerHealth.health > 0f)
+//			// ... chase.
+//			Chasing();
+//		// Otherwise...
+//		else
+//			// ... patrol.
+//			Patrolling();
 	}
 
 	//Get and set enemy position
@@ -127,15 +127,15 @@ public class EnemyAI : MonoBehaviour
 
 	public void setWayPoints(Transform[] wayPoints)
 	{
-		//select a random number of points 
-		int wayPointsIndex = Random.Range (3,wayPoints.Length-1);
-		patrolWayPoints = new Transform[wayPointsIndex];
-		//select random positions for each of the points
-		for (int i = 0; i< wayPointsIndex; i++) 
-		{
-			patrolWayPoints[i] = wayPoints[i];	
-		}
-		//assign them to the patrolWayPoints for the 
+//		//select a random number of points 
+//		int wayPointsIndex = Random.Range (3,wayPoints.Length-1);
+//		patrolWayPoints = new Transform[wayPointsIndex];
+//		//select random positions for each of the points
+//		for (int i = 0; i< wayPointsIndex; i++) 
+//		{
+//			patrolWayPoints[i] = wayPoints[i];	
+//		}
+//		//assign them to the patrolWayPoints for the 
 	}
 	
 	

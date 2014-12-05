@@ -46,15 +46,16 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AnimatorSetup.cs" />
-     <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyAnimation.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemySight.cs" />
+     <Compile Include="Assets\Scripts\GameController\AnimatorSetup.cs" />
+     <Compile Include="Assets\Scripts\GameController\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\GameController\CreateEnemy.cs" />
      <Compile Include="Assets\Scripts\GameController\HashIDs.cs" />
      <Compile Include="Assets\Scripts\GameController\LastPlayerSighting.cs" />
+     <Compile Include="Assets\Scripts\GameController\Tags.cs" />
      <Compile Include="Assets\Scripts\Player\GunMovement.cs" />
      <Compile Include="Assets\Scripts\Player\ImageSharePlacement.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
@@ -68,14 +69,11 @@
      <Compile Include="Assets\Scripts\RVO\Simulator.cs" />
      <Compile Include="Assets\Scripts\RVO\Vector2.cs" />
      <Compile Include="Assets\Scripts\RVOGame\Agents.cs" />
-     <Compile Include="Assets\Scripts\RVOGame\GameController.cs" />
      <Compile Include="Assets\Scripts\RVOGame\Graph.cs" />
      <Compile Include="Assets\Scripts\RVOGame\Node.cs" />
      <Compile Include="Assets\Scripts\RVOGame\Obstacles.cs" />
      <Compile Include="Assets\Scripts\RVOGame\Roadmap.cs" />
      <Compile Include="Assets\Scripts\RVOGame\SceneLayout.cs" />
-     <Compile Include="Assets\Scripts\RVOGame\initializeScene.cs" />
-     <Compile Include="Assets\Scripts\Tags.cs" />
      <None Include="Assets\MedievalBuildings\readme.txt" />
      <None Include="Assets\Shaders\ReflectiveDiffuseSpecTransp.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />

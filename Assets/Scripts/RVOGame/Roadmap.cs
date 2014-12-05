@@ -23,15 +23,15 @@ namespace RVOGame
 				public void populateGraph ()
 				{
 						//Nodes
-						graph.AddNode ("G_TR", new RVO.Vector2 (1000, 1000));
-						graph.AddNode ("G_TL", new RVO.Vector2 (0, 1000));
-						graph.AddNode ("G_BR", new RVO.Vector2 (1000, 0));
-						graph.AddNode ("G_BL", new RVO.Vector2 (0, 0));
-						graph.AddNode ("W_ML", new RVO.Vector2 (0, 500));
+						graph.AddNode ("G_TR", new RVO.Vector2 (970, 970));
+						graph.AddNode ("G_TL", new RVO.Vector2 (30, 970));
+						graph.AddNode ("G_BR", new RVO.Vector2 (970, 30));
+						graph.AddNode ("G_BL", new RVO.Vector2 (30, 30));
+						graph.AddNode ("W_ML", new RVO.Vector2 (30, 500));
 						graph.AddNode ("W_MC", new RVO.Vector2 (500, 500));
-						graph.AddNode ("W_MR", new RVO.Vector2 (1000, 500));
+						graph.AddNode ("W_MR", new RVO.Vector2 (970, 500));
 						graph.AddNode ("W_MT", new RVO.Vector2 (500, 1000));
-						graph.AddNode ("W_MB", new RVO.Vector2 (500, 0));		
+						graph.AddNode ("W_MB", new RVO.Vector2 (500, 30));		
 						//Connections
 						graph.AddConnection ("G_BL", "W_MB", 500, true);
 						graph.AddConnection ("G_BL", "W_ML", 500, true);

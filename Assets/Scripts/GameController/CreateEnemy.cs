@@ -7,33 +7,6 @@ namespace RVOGame
 {
 		public class CreateEnemy : MonoBehaviour
 		{
-//	public static int enemyCount = 0;	// to set number of enemies
-//	public Vector3 spawnValues;	// positions where the enemy can be spawned
-//	public GameObject enemy;	// enemy prefab to be spawned
-//	GameObject[] enemies = new GameObject[enemyCount];		// all the enemies that have been spawned
-//	public Transform[] wayPoints;	//get a reference to a wayPoint transform to instantiate enemy patrolling regions
-//
-//	void Start () 
-//	{
-//	     for (int i=0; i < enemyCount; i++) {
-//			Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), 0.0f, spawnValues.z);
-//			Quaternion spawnRotation = Quaternion.identity;
-//			enemies[i] = (GameObject)Instantiate(enemy, spawnPosition, spawnRotation);
-//			//set patrolway points for each enemy
-//			enemies[i].GetComponent<EnemyAI>().setWayPoints(wayPoints);
-//			enemies[i].GetComponent<EnemyAI>().wayPointSetFlag = true;
-//		}
-//	}
-//	
-//	// Update is called once per frame
-//	void Update () {
-//		//Debug.Log (enemies[2].transform.position.x);
-//		//Debug.Log (enemies[4].transform.position.y);
-//		//Debug.Log (enemies[0].transform.position.z);
-//	}
-//
-
-
 				//Note: numEnemyAgents = RvoAgents - 1 since RvoAgent[0] is player
 				public static int numEnemyAgents = 4;	// to set number of enemies
 				public GameObject enemy;	//Enemy prefab to be spawned
@@ -44,7 +17,7 @@ namespace RVOGame
 				public RVO.Simulator sim;
 				private RVOGame.SceneLayout _sceneLayout; //SceneLayout object defines the the scene and the initial positions
 				RVOGame.Roadmap _roadmap; //Roadmap object
-				public static double SQ_DIST_TO_GOAL_THRESH = 100.0f; //To decide when a player has reached its goal/waypoint
+				public static double SQ_DIST_TO_GOAL_THRESH = 1f; //To decide when a player has reached its goal/waypoint
 				public static float PREF_SPEED = 1.3f; //Same preferred speed for now
 
 				void Start ()
@@ -73,7 +46,7 @@ namespace RVOGame
 								int agentID = _sceneLayout._agents [i].getAgentID ();
 								Vector3 spawnPosition = new Vector3 (_sceneLayout._agents [agentID].getInitPosition ().x_, 0.0f, _sceneLayout._agents [agentID].getInitPosition ().y_);
 								Quaternion spawnRotation = Quaternion.identity;
-								enemies [i-1] = (GameObject)Instantiate (enemy, spawnPosition, spawnRotation);
+								enemies [i - 1] = (GameObject)Instantiate (enemy, spawnPosition, spawnRotation);
 						}
 				}
 	
@@ -85,6 +58,7 @@ namespace RVOGame
 	
 				void initGlobalPlans ()
 				{
+						//Do not need to set the global path for main player, so start at i
 						for (int i = 1; i < numAgents; i++) {
 								updateGlobalPlans (_sceneLayout._agents [i].getAgentID ());
 						}
@@ -96,8 +70,17 @@ namespace RVOGame
 						RVO.Simulator.Instance.SetNumWorkers (1);
 						//Timestep of the simulator :  need to see how this relates to Unity's timestep
 						RVO.Simulator.Instance.setTimeStep (0.1f);
+						//Might have to change the agent defaults
 						RVO.Simulator.Instance.setAgentDefaults (15.0f, 10, 10.0f, 5.0f, 2.0f, 2.0f, new RVO.Vector2 (0.0f, 0.0f));
 						addObstaclesAndAgents ();
+				}
+
+				void DebugPrint ()
+				{
+						int id = 2;
+						int goalIdx = _sceneLayout._agents [id]._nextGoalIndex;
+						Node goalNode = _roadmap.graph.Nodes [_sceneLayout._agents [id]._path [goalIdx]];
+						Debug.Log ("Agent ID : " + id + "Unity Position: " + enemies [id - 1].transform.position + "RVO Pos: " + RVO.Simulator.Instance.getAgentPosition (id) + "Game Goal" + goalNode.Position + "RVO Pref Vel : " + RVO.Simulator.Instance.getAgentPrefVelocity (id) + "RVO Current Velocity :" + RVO.Simulator.Instance.getAgentVelocity (id));
 				}
 	
 				void addObstaclesAndAgents ()
@@ -117,12 +100,18 @@ namespace RVOGame
 				// Update is called once per frame
 				void Update ()
 				{
-						shareMainCharacter ();
+						//Relay the main player's position to RVO
+						syncRVOUnity ();
+						//Set each agents preferred velocity
 						setPreferredVelocities ();
-						RVO.Simulator.Instance.doStep ();
+						//Use RVO to compute current velocity
+			RVO.Simulator.Instance.setTimeStep (Time.deltaTime);
+				RVO.Simulator.Instance.doStep ();
+						DebugPrint ();
+						//Animate the players w.r.t. to their current velocity
 						setEnemyState ();
 				}
-	
+
 				void shareMainCharacter ()
 				{
 						RVO.Vector2 mainCharPos = new RVO.Vector2 (player.transform.position.x, player.transform.position.z);
@@ -133,38 +122,34 @@ namespace RVOGame
 				void setEnemyState ()
 				{
 						for (int i = 1; i < numAgents; i++) {
-								enemies [i-1].GetComponent<EnemyAnimation> ().moveAgent(new Vector3 (RVO.Simulator.Instance.getAgentVelocity (i).x_, 0.0f, RVO.Simulator.Instance.getAgentVelocity (i).y_));
-				//enemies [i-1].GetComponent<EnemyAnimation> ().moveAgent(new Vector3 (RVO.Simulator.Instance.getAgentPosition (i).x_, 0.0f, RVO.Simulator.Instance.getAgentPosition (i).y_));
+								enemies [i - 1].GetComponent<EnemyAnimation> ().moveAgent (new Vector3 (RVO.Simulator.Instance.getAgentVelocity (i).x_, 0.0f, RVO.Simulator.Instance.getAgentVelocity (i).y_));
 						}		
 				}
 	
 				void setPreferredVelocities ()
 				{
+						//Do not need to set the global path for main player, so start at i
 						for (int i = 1; i < numAgents; i++) {
 								int agentID = _sceneLayout._agents [i].getAgentID ();
 								int goalIdx = _sceneLayout._agents [agentID]._nextGoalIndex;
 								Node goalNode = _roadmap.graph.Nodes [_sceneLayout._agents [agentID]._path [goalIdx]];
-								if (RVO.Vector2.distSq (goalNode.Position, RVO.Simulator.Instance.agents_ [agentID].position_) < SQ_DIST_TO_GOAL_THRESH) {
-										if (goalIdx < (_sceneLayout._agents [agentID]._path.Count - 1))
+								double distanceToWayPoint = RVO.Vector2.distSq (goalNode.Position, RVO.Simulator.Instance.agents_ [agentID].position_);
+								if (distanceToWayPoint < SQ_DIST_TO_GOAL_THRESH) {
+					if (!goalNode.Name.Equals(_sceneLayout._agents [agentID]._finalGoal)) {
 												goalIdx++;
-										else {
-												setNewGoal (agentID);
+												_sceneLayout._agents [agentID]._nextGoalIndex = goalIdx;
+										} else {
 												updateGlobalPlans (agentID);
 										}
 								}
 								goalNode = _roadmap.graph.Nodes [_sceneLayout._agents [agentID]._path [goalIdx]];
-								RVO.Simulator.Instance.setAgentPrefVelocity (agentID, (goalNode.Position - RVO.Simulator.Instance.agents_ [agentID].position_) * PREF_SPEED);
+								RVO.Simulator.Instance.setAgentPrefVelocity (agentID, RVO.RVOMath.normalize (goalNode.Position - RVO.Simulator.Instance.agents_ [agentID].position_));
 						}		
-				}
-	
-				void setNewGoal (int agentID)
-				{
-		
 				}
 	
 				void updateGlobalPlans (int agentID)
 				{
-						//Find the closest visible node to this agent's initial position
+						//Set start node to closest visible node to this agent's current position
 						double distance = double.PositiveInfinity;
 						string startNode = "";
 						foreach (Node node in _roadmap.graph.Nodes.Values) {
@@ -176,12 +161,25 @@ namespace RVOGame
 						}//end of foreach
 						if (startNode.Equals ("", StringComparison.Ordinal))
 								throw new ApplicationException ("startNode empty");
-						//Update the path and goalIndex
-						_sceneLayout._agents [agentID]._path = _roadmap.getDijkstraPath (startNode, _sceneLayout._agents [agentID]._finalGoal);
+						//Update the final goal, next goal index and path for this agent
+						_sceneLayout._agents [agentID]._finalGoal = _sceneLayout.getFinalGoal (startNode);
 						_sceneLayout._agents [agentID]._nextGoalIndex = 0;
+						_sceneLayout._agents [agentID]._path = _roadmap.getDijkstraPath (startNode, _sceneLayout._agents [agentID]._finalGoal);
 		
 				}
 	
+				public void syncRVOUnity ()
+				{
+						RVO.Vector2 mainCharPos = new RVO.Vector2 (player.transform.position.x, player.transform.position.z);
+						RVO.Simulator.Instance.setAgentPrefVelocity (0, new RVO.Vector2 (0, 0));
+						RVO.Simulator.Instance.agents_ [0].setMainCharPos (mainCharPos);
+						for (int i = 1; i < numAgents; i++) {
+								RVO.Vector2 enemyPos = new RVO.Vector2 (enemies [i - 1].transform.position.x, enemies [i - 1].transform.position.z);
+								RVO.Simulator.Instance.setAgentPosition (i, enemyPos);
+				
+						}
+				}
+		
 				bool RVOandRVOGameSynced ()
 				{
 						if ((RVO.Simulator.Instance.getNumAgents () != numAgents))
