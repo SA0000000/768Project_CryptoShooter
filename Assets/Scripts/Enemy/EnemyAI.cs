@@ -61,12 +61,12 @@ public class EnemyAI : MonoBehaviour
 	{
 		get
 		{
-			return player.transform.position;
+			return transform.position;
 		}
 
 		set
 		{
-			player.transform.position = (Vector3)value;
+			transform.position = (Vector3)value;
 		}
 	}
 
@@ -75,11 +75,11 @@ public class EnemyAI : MonoBehaviour
 	{
 		get
 		{
-			return player.rigidbody.velocity;
+			return rigidbody.velocity;
 		}
 		set
 		{
-			player.rigidbody.velocity = value;
+			rigidbody.velocity = value;
 		}
 	}
 	
