@@ -84,11 +84,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 400010}
   - 33: {fileID: 3300000}
-  - 64: {fileID: 6400000}
   - 23: {fileID: 2300000}
   m_Layer: 10
   m_Name: Tag_share
-  m_TagString: Untagged
+  m_TagString: TagShare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -879,7 +878,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
+  m_LocalRotation: {x: .65328151, y: .270598084, z: -.270598084, w: .65328151}
   m_LocalPosition: {x: -.0293684006, y: 2.14024115, z: -.275533438}
   m_LocalScale: {x: .0599999987, y: .0599999987, z: .0599999987}
   m_Children: []
@@ -1413,9 +1412,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100092}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+  m_LocalPosition: {x: 500, y: 0, z: 530}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 400070}
   - {fileID: 400052}
@@ -1506,11 +1505,11 @@ Renderer:
   m_GameObject: {fileID: 100010}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: e0513eee395a68548907fb9f1d194514, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1568,19 +1567,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &6400000
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100010}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -1633,14 +1619,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbcb2a586c8223c41870e94d965cfa1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 5
-  chaseWaitTime: 5
-  patrolSpeed: 2
-  patrolWaitTime: 1
-  patrolWayPoints: []
-  defaultWayPoint:
-  - {fileID: 0}
-  wayPointSetFlag: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1653,8 +1631,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  deathClip: {fileID: 0}
-  sinkSpeed: 2.5
+  sinkSpeed: .5
+  scoreValue: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

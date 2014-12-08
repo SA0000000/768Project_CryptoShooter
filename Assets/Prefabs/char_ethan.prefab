@@ -867,6 +867,7 @@ GameObject:
   - 81: {fileID: 8100002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
+  - 135: {fileID: 13500000}
   m_Layer: 0
   m_Name: char_ethan
   m_TagString: Player
@@ -1703,7 +1704,7 @@ Transform:
   m_Children:
   - {fileID: 400076}
   m_Father: {fileID: 400112}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!4 &400050
 Transform:
   m_ObjectHideFlags: 1
@@ -2060,13 +2061,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100104}
-  m_LocalRotation: {x: .306180805, y: .768668294, z: -.160214126, w: -.538269401}
-  m_LocalPosition: {x: -.0801124871, y: 1.51640332, z: .18072468}
+  m_LocalRotation: {x: -.252342373, y: -.597210526, z: .236090198, w: .72382617}
+  m_LocalPosition: {x: .00265114312, y: 1.45526588, z: .0182919055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400066}
   m_Father: {fileID: 400112}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!4 &400106
 Transform:
   m_ObjectHideFlags: 1
@@ -2112,17 +2113,17 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100112}
-  m_LocalRotation: {x: 0, y: .984807789, z: 0, w: .173648238}
-  m_LocalPosition: {x: -2.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: .233445361, z: 0, w: .972369909}
+  m_LocalPosition: {x: 383, y: 0, z: 231.5}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 400058}
   - {fileID: 400064}
   - {fileID: 400148}
   - {fileID: 400154}
   - {fileID: 400028}
-  - {fileID: 400048}
   - {fileID: 400104}
+  - {fileID: 400048}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400114
@@ -2640,7 +2641,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!81 &8100000
 AudioListener:
@@ -2648,7 +2649,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100048}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!81 &8100002
 AudioListener:
   m_ObjectHideFlags: 1
@@ -2687,7 +2688,7 @@ Light:
   m_Enabled: 0
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: .533899188, g: .91911763, b: .743776798, a: 1}
   m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
@@ -2749,6 +2750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSmoothing: 15
   speedDampTime: .100000001
+  playerSpeed: 5.5
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2766,7 +2768,15 @@ MonoBehaviour:
   fadeSpeed: 10
   gun: {fileID: 100104}
   timeBetweenBullets: .150000006
-  range: 10
+  range: 30
+  startingScore: 50
+  currentScore: 0
+  scoreSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  flashSpeed: 5
+  correctKillColor: {r: 0, g: 1, b: 0, a: .100000001}
+  incorrectKillColor: {r: 1, g: 0, b: 0, a: .100000001}
+  gameOverText: {fileID: 0}
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -2791,8 +2801,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: .0500000007
-    endWidth: .0250000004
+    startWidth: 2
+    endWidth: .5
     m_StartColor:
       serializedVersion: 2
       rgba: 4294967295
@@ -2815,7 +2825,7 @@ GUITexture:
   m_GameObject: {fileID: 100076}
   m_Enabled: 0
   m_Texture: {fileID: 2800000, guid: 92c9323b72aaf1740a102400829786be, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .0196078438}
+  m_Color: {r: 1, g: 1, b: 1, a: .996078432}
   m_PixelInset:
     serializedVersion: 2
     x: -64
@@ -2826,6 +2836,18 @@ GUITexture:
   m_RightBorder: 0
   m_TopBorder: 0
   m_BottomBorder: 0
+--- !u!135 &13500000
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

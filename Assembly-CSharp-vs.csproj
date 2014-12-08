@@ -39,47 +39,50 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Scripts\Enemy\EnemyAI.cs" />
-     <Compile Include="Assets\Scripts\Scripts\Enemy\EnemyAnimation.cs" />
-     <Compile Include="Assets\Scripts\Scripts\Enemy\EnemyHealth.cs" />
-     <Compile Include="Assets\Scripts\Scripts\GameController\AnimatorSetup.cs" />
-     <Compile Include="Assets\Scripts\Scripts\GameController\CameraMovement.cs" />
-     <Compile Include="Assets\Scripts\Scripts\GameController\CreateEnemy.cs" />
-     <Compile Include="Assets\Scripts\Scripts\GameController\HashIDs.cs" />
-     <Compile Include="Assets\Scripts\Scripts\GameController\LastPlayerSighting.cs" />
-     <Compile Include="Assets\Scripts\Scripts\GameController\LookAtCamera.cs" />
-     <Compile Include="Assets\Scripts\Scripts\GameController\MouseAim.cs" />
-     <Compile Include="Assets\Scripts\Scripts\GameController\Tags.cs" />
-     <Compile Include="Assets\Scripts\Scripts\Player\GunMovement.cs" />
-     <Compile Include="Assets\Scripts\Scripts\Player\ImageSharePlacement.cs" />
-     <Compile Include="Assets\Scripts\Scripts\Player\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\Scripts\Player\PlayerShooting.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVO\Agent.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVO\KdTree.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVO\Line.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVO\MeshBoundingBox.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVO\Obstacle.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVO\RVOMath.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVO\Simulator.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVO\Vector2.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVOGame\Agents.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVOGame\Graph.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVOGame\Node.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVOGame\Obstacles.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVOGame\Roadmap.cs" />
-     <Compile Include="Assets\Scripts\Scripts\RVOGame\SceneLayout.cs" />
+     <Compile Include="Assets\_Scripts\Enemy\EnemyAI.cs" />
+     <Compile Include="Assets\_Scripts\Enemy\EnemyAnimation.cs" />
+     <Compile Include="Assets\_Scripts\Enemy\EnemyHealth.cs" />
+     <Compile Include="Assets\_Scripts\Enemy\EnemySight.cs" />
+     <Compile Include="Assets\_Scripts\GameController\AnimatorSetup.cs" />
+     <Compile Include="Assets\_Scripts\GameController\CreateEnemy.cs" />
+     <Compile Include="Assets\_Scripts\GameController\GameOverManager.cs" />
+     <Compile Include="Assets\_Scripts\GameController\HashIDs.cs" />
+     <Compile Include="Assets\_Scripts\GameController\LastPlayerSighting.cs" />
+     <Compile Include="Assets\_Scripts\GameController\LookAtCamera.cs" />
+     <Compile Include="Assets\_Scripts\GameController\Tags.cs" />
+     <Compile Include="Assets\_Scripts\Player\GunMovement.cs" />
+     <Compile Include="Assets\_Scripts\Player\ImageSharePlacement.cs" />
+     <Compile Include="Assets\_Scripts\Player\MouseAim.cs" />
+     <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\_Scripts\Player\PlayerShooting.cs" />
+     <Compile Include="Assets\_Scripts\RVO\Agent.cs" />
+     <Compile Include="Assets\_Scripts\RVO\KdTree.cs" />
+     <Compile Include="Assets\_Scripts\RVO\Line.cs" />
+     <Compile Include="Assets\_Scripts\RVO\MeshBoundingBox.cs" />
+     <Compile Include="Assets\_Scripts\RVO\Obstacle.cs" />
+     <Compile Include="Assets\_Scripts\RVO\RVOMath.cs" />
+     <Compile Include="Assets\_Scripts\RVO\Simulator.cs" />
+     <Compile Include="Assets\_Scripts\RVO\Vector2.cs" />
+     <Compile Include="Assets\_Scripts\RVOGame\Agents.cs" />
+     <Compile Include="Assets\_Scripts\RVOGame\Graph.cs" />
+     <Compile Include="Assets\_Scripts\RVOGame\Node.cs" />
+     <Compile Include="Assets\_Scripts\RVOGame\Obstacles.cs" />
+     <Compile Include="Assets\_Scripts\RVOGame\Roadmap.cs" />
+     <Compile Include="Assets\_Scripts\RVOGame\SceneLayout.cs" />
+     <None Include="Assets\Standard Assets\water well\readme.txt" />
      <None Include="Assets\MedievalBuildings\readme.txt" />
      <None Include="Assets\Shaders\ReflectiveDiffuseSpecTransp.shader" />
+     <None Include="Assets\Sculptures\readme.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
