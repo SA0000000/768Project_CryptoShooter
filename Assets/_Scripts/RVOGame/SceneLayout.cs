@@ -76,7 +76,7 @@ namespace RVOGame
 				public void initAgents ()
 				{
 						//Main Player
-						_agents.Add (new RVOGame.Agents (0, new RVO.Vector2 (900, 650), "G_BR"));
+						_agents.Add (new RVOGame.Agents (0, new RVO.Vector2 (800, 550), "G_BR"));
 						//BL players
 						_agents.Add (new RVOGame.Agents (1, new RVO.Vector2 (30, 30), "G_TR"));
 						_agents.Add (new RVOGame.Agents (2, new RVO.Vector2 (139, 50), "G_BR"));
