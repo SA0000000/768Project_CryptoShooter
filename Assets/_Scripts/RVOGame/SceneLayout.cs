@@ -76,14 +76,14 @@ namespace RVOGame
 				public void initAgents ()
 				{
 						//Main Player
-						_agents.Add (new RVOGame.Agents (0, new RVO.Vector2 (800, 550), "G_BR"));
+						_agents.Add (new RVOGame.Agents (0, new RVO.Vector2 (133, 169), "G_BR"));
 						//BL players
-						_agents.Add (new RVOGame.Agents (1, new RVO.Vector2 (30, 30), "G_TR"));
+						_agents.Add (new RVOGame.Agents (1, new RVO.Vector2 (30, 20), "G_TR"));
 						_agents.Add (new RVOGame.Agents (2, new RVO.Vector2 (139, 50), "G_BR"));
 						_agents.Add (new RVOGame.Agents (3, new RVO.Vector2 (244, 75), "G_TL"));
 						_agents.Add (new RVOGame.Agents (4, new RVO.Vector2 (404, 30), "G_BR"));
 						_agents.Add (new RVOGame.Agents (5, new RVO.Vector2 (30, 60), "G_TR"));
-						_agents.Add (new RVOGame.Agents (6, new RVO.Vector2 (30, 139), "G_TL"));
+						_agents.Add (new RVOGame.Agents (6, new RVO.Vector2 (30, 129), "G_TL"));
 						_agents.Add (new RVOGame.Agents (7, new RVO.Vector2 (30, 244), "G_TR"));
 						_agents.Add (new RVOGame.Agents (8, new RVO.Vector2 (30, 404), "G_BR"));
 						_agents.Add (new RVOGame.Agents (9, new RVO.Vector2 (255, 450), "G_TR"));
@@ -105,9 +105,9 @@ namespace RVOGame
 						_agents.Add (new RVOGame.Agents (23, new RVO.Vector2 (250, 925), "G_BL"));
 						_agents.Add (new RVOGame.Agents (24, new RVO.Vector2 (400, 970), "G_TR"));
 						_agents.Add (new RVOGame.Agents (25, new RVO.Vector2 (30, 860), "G_BL"));
-						_agents.Add (new RVOGame.Agents (26, new RVO.Vector2 (30, 750), "G_BR"));
-						_agents.Add (new RVOGame.Agents (27, new RVO.Vector2 (30, 600), "G_BL"));
-						_agents.Add (new RVOGame.Agents (28, new RVO.Vector2 (30, 940), "G_BR"));
+						_agents.Add (new RVOGame.Agents (26, new RVO.Vector2 (90, 750), "G_BR"));
+						_agents.Add (new RVOGame.Agents (27, new RVO.Vector2 (40, 600), "G_BL"));
+						_agents.Add (new RVOGame.Agents (28, new RVO.Vector2 (12, 740), "G_BR"));
 						_agents.Add (new RVOGame.Agents (29, new RVO.Vector2 (250, 550), "G_TR"));
 						_agents.Add (new RVOGame.Agents (30, new RVO.Vector2 (450, 750), "G_BR"));
 						//BR players
@@ -115,9 +115,9 @@ namespace RVOGame
 						_agents.Add (new RVOGame.Agents (32, new RVO.Vector2 (860, 50), "G_BL"));
 						_agents.Add (new RVOGame.Agents (33, new RVO.Vector2 (750, 75), "G_TL"));
 						_agents.Add (new RVOGame.Agents (34, new RVO.Vector2 (600, 30), "G_BL"));
-						_agents.Add (new RVOGame.Agents (35, new RVO.Vector2 (970, 60), "G_TR"));
+						_agents.Add (new RVOGame.Agents (35, new RVO.Vector2 (960, 60), "G_TR"));
 						_agents.Add (new RVOGame.Agents (36, new RVO.Vector2 (970, 139), "G_TL"));
-						_agents.Add (new RVOGame.Agents (37, new RVO.Vector2 (970, 244), "G_TR"));
+						_agents.Add (new RVOGame.Agents (37, new RVO.Vector2 (920, 244), "G_TR"));
 						_agents.Add (new RVOGame.Agents (38, new RVO.Vector2 (970, 404), "G_BL"));
 						_agents.Add (new RVOGame.Agents (39, new RVO.Vector2 (750, 450), "G_TR"));
 						_agents.Add (new RVOGame.Agents (40, new RVO.Vector2 (650, 255), "G_TL"));
